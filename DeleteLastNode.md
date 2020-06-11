@@ -59,7 +59,7 @@ public class DeleteLastNode {
         deleteLastNode.add(63);
         deleteLastNode.add(522);
         deleteLastNode.displayNodes();
-        System.out.println();
+        System.out.println("--- After deleting elements ---");
         
         deleteLastNode.deleteLastNode();
         deleteLastNode.displayNodes();
@@ -87,9 +87,7 @@ public class DeleteLastNode {
 output - 
 ```
 12 13 27 63 522 
-```
-After deleting elements
-```
+--- After deleting elements ---
 12 13 27 63 
 12 13 27 
 12 13 
