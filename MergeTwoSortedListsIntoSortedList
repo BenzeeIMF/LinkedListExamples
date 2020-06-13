@@ -1,0 +1,91 @@
+This code gives you a sorted List provided the two lists are already sorted
+
+```
+public class MergeTwoLinkedLists {
+
+    class Node {
+
+        Node head, next;
+        int data;
+    }
+    Node head;
+
+    void add(int data) {
+        Node node = new Node();
+        node.data = data;
+
+        if (head == null) {
+            head = node;
+        } else {
+            Node n = head;
+            while (n.next != null) {
+                n = n.next;
+            }
+            n.next = node;
+        }
+
+    }
+
+    void displayNodes() {
+        Node n = head;
+        while (n != null) {
+
+            System.out.print(n.data + " ");
+            n = n.next;
+        }
+        System.out.println("");
+    }
+
+    Node mergeLists(Node a, Node b) {
+        Node result;
+
+        if (a == null) {
+            return b;
+        }
+        if (b == null) {
+            return a;
+        }
+
+        if (a.data < b.data) {
+            result = a;
+            result.next = mergeLists(a.next, b);
+        } else {
+            result = b;
+            result.next = mergeLists(a, b.next);
+        }
+
+        return result;
+    }
+
+    void getMergedList(Node a, Node b) {
+        head = mergeLists(a, b);
+    }
+
+    public static void main(String[] args) {
+        MergeTwoLinkedLists lista = new MergeTwoLinkedLists();
+        lista.add(12);
+        lista.add(13);
+        lista.add(85);
+        lista.displayNodes();
+
+        MergeTwoLinkedLists listb = new MergeTwoLinkedLists();
+        listb.add(27);
+        listb.add(63);
+        listb.add(522);
+        listb.displayNodes();
+
+        System.out.println("After Merging");
+        MergeTwoLinkedLists finalList = new MergeTwoLinkedLists();
+        finalList.getMergedList(lista.head, listb.head);
+        finalList.displayNodes();
+    }
+}
+```
+
+Output - 
+```
+12 13 85 
+27 63 522 
+After Merging
+12 13 27 63 85 522 
+```
